@@ -8,12 +8,13 @@ import { useTranslation } from "react-i18next";
 import { NavDropdown } from "react-bootstrap";
 import viFlag from "assets/svg/language/vi.svg";
 import enFlag from "assets/svg/language/en.svg";
+import { ThemeContextType } from "components/context/app.context";
 
 function AppHeader() {
-  const { theme, setTheme } = useCurrentApp() as any; // Get theme and setTheme from context
+  const { theme, setTheme } = useCurrentApp(); // Get theme and setTheme from context
   const { t, i18n } = useTranslation(); // Get translation function and i18n instance from react-i18next
 
-  const handleMode = (mode: string) => {
+  const handleMode = (mode: ThemeContextType) => {
     localStorage.setItem("theme", mode);
     document.documentElement.setAttribute("data-bs-theme", mode);
     setTheme(mode);
