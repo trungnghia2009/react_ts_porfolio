@@ -16,6 +16,14 @@ const HeroLeft = (props: Props) => {
 
   const { t } = useTranslation();
 
+  // https://drive.google.com/file/d/13-_u7-Io3wbDov0ry-g7IruDTUj3jHqs/view?usp=sharing
+  const onDownloadCV = () => {
+    const url =
+      "https://drive.google.com/file/d/13-_u7-Io3wbDov0ry-g7IruDTUj3jHqs/view?usp=sharing";
+    const newWindow = window.open(url, "_blank", "noopener,noreferrer");
+    if (newWindow) newWindow.opener = null;
+  };
+
   return (
     <div className="hero-left">
       <h3>
@@ -64,6 +72,7 @@ const HeroLeft = (props: Props) => {
         <ResizeButton
           btnText={t("heroSection.cv")}
           btnIcons={<MdFileDownload />}
+          onClick={onDownloadCV}
         />
       </div>
     </div>
