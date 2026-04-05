@@ -9,9 +9,21 @@ import { useTranslation } from "react-i18next"; // Import useTranslation hook fr
 import Divider from "components/sections/divider";
 import Experience from "components/sections/experience";
 import Skill from "components/sections/skill";
+import { useRef } from "react";
 
 const HomePage = () => {
   const { t } = useTranslation();
+
+  const experienceRef = useRef<HTMLElement>(null);
+
+  const scrollToExperience = () => {
+    if (experienceRef.current) {
+      experienceRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
 
   return (
     <div className="homepage-screen">
@@ -30,7 +42,7 @@ const HomePage = () => {
         <Container style={{ position: "relative" }}>
           <Row>
             <Col className="d-none d-md-block" md={6}>
-              <HeroLeft />
+              <HeroLeft onExperienceClick={scrollToExperience} />
             </Col>
             <Col md={6}>
               <HeroRight />
@@ -53,7 +65,7 @@ const HomePage = () => {
         </Container>
       </section>
       <Divider />
-      <section>
+      <section ref={experienceRef}>
         <Container>
           <Experience />
         </Container>

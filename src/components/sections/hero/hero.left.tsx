@@ -7,7 +7,13 @@ import { APP_DATA } from "helpers/data";
 import { MdFileDownload } from "react-icons/md";
 import { AiFillFire } from "react-icons/ai";
 
-const HeroLeft = () => {
+type Props = {
+  onExperienceClick: () => void;
+};
+
+const HeroLeft = (props: Props) => {
+  const { onExperienceClick } = props;
+
   const { t } = useTranslation();
 
   return (
@@ -53,6 +59,7 @@ const HeroLeft = () => {
             border: "1px solid var(--border-hero-right)",
             color: "var(--text-white-1)",
           }}
+          onClick={onExperienceClick}
         />
         <ResizeButton
           btnText={t("heroSection.cv")}
